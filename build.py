@@ -44,18 +44,13 @@ def run_cmake():
 
 # 步骤3: 执行构建命令
 def build_project():
-    # 指定msbuild的完整路径
-    msbuild_path = r'C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\MSBuild.exe'
     original_dir = os.getcwd()
     try:
         os.chdir(build_dir)
-        # 使用Popen来非阻塞地运行msbuild
-        process = subprocess.Popen([msbuild_path, 'ALL_BUILD.vcxproj'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding='utf-8')
-        stdout, stderr = process.communicate()
-        if process.returncode != 0:
-            raise subprocess.CalledProcessError(process.returncode, [msbuild_path, 'ALL_BUILD.vcxproj'], output=stdout, stderr=stderr)
+        # 使用make命令进行构建
+        result = subprocess.run(['make'], check=True, capture_output=True, text=True, encoding='utf-8')
         print("Build output:")
-        print(stdout)
+        print(result.stdout)
         # 打印Debug目录下的文件列表，检查可执行文件是否生成
         debug_dir = os.path.join(build_dir, 'Debug')
         if os.path.exists(debug_dir):
@@ -71,27 +66,11 @@ def build_project():
     finally:
         os.chdir(original_dir)
 
-# 步骤4: 检查可执行文件是否存在
-def run_executable():
-    executable_name = 'chitu'
-    executable_path = os.path.join(build_dir, 'Debug', f'{executable_name}.exe')
-    print(f"Checking executable path: {executable_path}")
-    # 再次检查Debug目录是否存在
-    debug_dir = os.path.join(build_dir, 'Debug')
-    print(f"Debug directory path: {debug_dir}")
-    if not os.path.exists(debug_dir):
-        print(f"Debug directory {debug_dir} not found.")
-    if os.path.exists(executable_path):
-        print(f"Executable {executable_path} found.")
-    else:
-        print(f"Executable {executable_path} not found.")
-
 # 主函数
 def main():
     if clean_build_directory():
         if run_cmake():
-            if build_project():
-                run_executable()
+            build_project()
 
 if __name__ == "__main__":
     main()
