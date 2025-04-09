@@ -1,6 +1,6 @@
-# project_idea
+# 嵌入式工程设计
 
-# 分层结构
+## 分层结构
 应用层 --- app
 依赖： app -> mid,fun,dal
 功能： 自动进料页面
@@ -20,8 +20,7 @@
 硬件抽象层 --- hal
 例子： GPIO，UART，TIMER
 
-# 编译运行
-
+## 编译运行
 ```
 python3 chitu.py
 ./build/chitu
