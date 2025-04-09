@@ -1,0 +1,1 @@
+int hal_uart_init();
