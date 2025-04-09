@@ -1,11 +1,11 @@
-#ifndef MID_LOG
-#define MID_LOG
+#ifndef DAL_LED
+#define DAL_LED
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-int LOG(const char *str);
+int dal_led_init();
 
 #ifdef __cplusplus
 }

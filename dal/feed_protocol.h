@@ -1,11 +1,11 @@
-#ifndef MID_LOG
-#define MID_LOG
+#ifndef FEED_PROTOCOL
+#define FEED_PROTOCOL
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-int LOG(const char *str);
+int dal_feed_protocol_init();
 
 #ifdef __cplusplus
 }

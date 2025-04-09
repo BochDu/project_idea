@@ -9,10 +9,11 @@ set(CMAKE_CXX_STANDARD 11)
 
 # 添加子目录
 add_subdirectory(app)
-add_subdirectory(dal)
 add_subdirectory(fun)
+add_subdirectory(dal)
 add_subdirectory(hal)
 add_subdirectory(mid)
+
 
 # 创建可执行文件
 add_executable(chitu app/main.cpp)
@@ -20,8 +21,8 @@ add_executable(chitu app/main.cpp)
 # 链接库
 target_link_libraries(chitu PRIVATE
     app_lib
-    dal_lib
     fun_lib
+    dal_lib
     hal_lib
     mid_lib
 )

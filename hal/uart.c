@@ -1,9 +1,9 @@
 #include "uart.h"
 
-#include "log.h"
+#include <stdio.h>
 
 int hal_uart_init()
 {
-    LOG("hal_uart_init\n");
+    printf("hal_uart_init\n");
     return 0;
 }
