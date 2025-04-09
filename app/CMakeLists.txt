@@ -8,4 +8,6 @@ add_library(app_lib ${APP_SOURCES})
 target_include_directories(app_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../mid
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dal
+    ${CMAKE_CURRENT_SOURCE_DIR}/../fun
 )

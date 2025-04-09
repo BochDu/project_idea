@@ -1,9 +1,10 @@
-// app/main.cpp
-#include <iostream>
+#include "log.h"
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+int main()
+{
+    LOG("hello world");
 
-    getchar();
+    while (1)
+        ;
     return 0;
 }

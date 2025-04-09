@@ -8,4 +8,5 @@ add_library(fun_lib ${FUN_SOURCES})
 target_include_directories(fun_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../mid
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dal
 )

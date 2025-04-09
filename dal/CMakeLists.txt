@@ -8,4 +8,6 @@ add_library(dal_lib ${DAL_SOURCES})
 target_include_directories(dal_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../mid
+    ${CMAKE_CURRENT_SOURCE_DIR}/../hal
+    ${CMAKE_CURRENT_SOURCE_DIR}/../os
 )
