@@ -12,6 +12,7 @@ add_subdirectory(app)
 add_subdirectory(dal)
 add_subdirectory(fun)
 add_subdirectory(hal)
+add_subdirectory(mid)
 
 # 创建可执行文件
 add_executable(chitu app/main.cpp)
@@ -22,4 +23,5 @@ target_link_libraries(chitu PRIVATE
     dal_lib
     fun_lib
     hal_lib
+    mid_lib
 )

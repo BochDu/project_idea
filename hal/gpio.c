@@ -1,5 +1,7 @@
 #include "gpio.h"
 
+#include "log.h"
+
 int hal_gpio_init()
 {
     LOG("hal_gpio_init\n");
