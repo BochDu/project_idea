@@ -1,6 +1,7 @@
 import os
 import shutil
 import subprocess
+import platform
 
 # 定义项目根目录和build目录
 project_root = '.'
@@ -47,8 +48,14 @@ def build_project():
     original_dir = os.getcwd()
     try:
         os.chdir(build_dir)
-        # 使用make命令进行构建
-        result = subprocess.run(['make'], check=True, capture_output=True, text=True, encoding='utf-8')
+        # 根据操作系统选择构建命令
+        system = platform.system()
+        if system == "Windows":
+            build_command = ['cmake', '--build', '.']
+        else:
+            build_command = ['make']
+
+        result = subprocess.run(build_command, check=True, capture_output=True, text=True, encoding='utf-8')
         print("Build output:")
         print(result.stdout)
         # 打印Debug目录下的文件列表，检查可执行文件是否生成
