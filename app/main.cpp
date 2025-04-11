@@ -1,10 +1,11 @@
 #include "log.h"
 #include "feed_protocol.h"
 #include "feed_manage.h"
+#include "hello_world.h"
 
 int main()
 {
-    LOG("hello world\n");
+    hello_word();
 
     fun_feed_manage_init();
 
