@@ -3,6 +3,11 @@ import shutil
 import subprocess
 import platform
 
+# 定义配置参数
+config = [
+    '-DENABLE_ASAN=ON',
+]
+
 # 定义项目根目录和build目录
 project_root = '.'
 build_dir = os.path.join(project_root, 'build')
@@ -29,9 +34,14 @@ def clean_build_directory():
 # 步骤2: 执行cmake ..命令
 def run_cmake():
     original_dir = os.getcwd()
+    cmake_args = ['cmake', '..']
+
+    # 配置
+    cmake_args.extend(config)
+
     try:
         os.chdir(build_dir)
-        result = subprocess.run(['cmake', '..'], check=True, capture_output=True, text=True, encoding='utf-8')
+        result = subprocess.run(cmake_args, check=True, capture_output=True, text=True, encoding='utf-8')
         print("CMake output:")
         print(result.stdout)
         return True
