@@ -25,9 +25,10 @@ def clean_build_directory():
                     shutil.rmtree(dir_path)
             print("Build directory cleaned successfully.")
         else:
-            print("Build directory does not exist.")
+            print("Build directory does not exist. Creating it...")
+            os.makedirs(build_dir)
     except Exception as e:
-        print(f"Error cleaning build directory: {e}")
+        print(f"Error cleaning or creating build directory: {e}")
         return False
     return True
 
