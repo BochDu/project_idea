@@ -42,14 +42,10 @@ def run_cmake():
 
     try:
         os.chdir(build_dir)
-        result = subprocess.run(cmake_args, check=True, capture_output=True, text=True, encoding='utf-8')
-        print("CMake output:")
-        print(result.stdout)
+        subprocess.run(cmake_args, check=True, text=True, encoding='utf-8')
         return True
     except subprocess.CalledProcessError as e:
         print(f"CMake failed: {e}")
-        print("CMake error output:")
-        print(e.stderr)
         return False
     finally:
         os.chdir(original_dir)
@@ -66,9 +62,7 @@ def build_project():
         else:
             build_command = ['make']
 
-        result = subprocess.run(build_command, check=True, capture_output=True, text=True, encoding='utf-8')
-        print("Build output:")
-        print(result.stdout)
+        subprocess.run(build_command, check=True, text=True, encoding='utf-8')
         # 打印Debug目录下的文件列表，检查可执行文件是否生成
         debug_dir = os.path.join(build_dir, 'Debug')
         if os.path.exists(debug_dir):
@@ -78,8 +72,6 @@ def build_project():
         return True
     except subprocess.CalledProcessError as e:
         print(f"Build failed: {e}")
-        print("Build error output:")
-        print(e.stderr)
         return False
     finally:
         os.chdir(original_dir)
